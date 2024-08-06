@@ -99,7 +99,7 @@ module AgentConnect
 
         handle_response_error(response)
 
-        JWT.decode(response.body, nil, true, algorithms: AgentConnect.discovery.jwks.first["alg"], jwks: AgentConnect.discovery.jwks).first
+        JWT.decode(response.body, nil, true, algorithms: AgentConnect.algorithm || AgentConnect.discovery.jwks.first["alg"], jwks: AgentConnect.discovery.jwks).first
       end
 
       def handle_response_error(response)
