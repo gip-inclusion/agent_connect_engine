@@ -17,18 +17,11 @@ module AgentConnect
       )
 
       unless callback_client.fetch_user_info_from_code!(params[:code])
-        flash[:error] = generic_error_message
-        redirect_to(new_agent_session_path) and return
+        instance_exec(callback_client, &AgentConnect.error_callback)
+        return
       end
 
-      AgentConnect.callback.call(callback_client, self)
-    end
-
-    private
-
-    def generic_error_message
-      support_email = current_domain.support_email
-      %(Nous n'avons pas pu vous authentifier. Contactez le support à l'adresse <a href="mailto:#{support_email}">#{support_email}</a> si le problème persiste.)
+      instance_exec(callback_client, &AgentConnect.success_callback)
     end
   end
 end

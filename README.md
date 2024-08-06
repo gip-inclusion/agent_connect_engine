@@ -27,15 +27,17 @@ AgentConnect.initialize! do |config|
   # Declare the callback that will be called after the user is authenticated
   # The callback is executed in the scope of a controller so you can redirect the user
   # after a successful authentication
-  config.callback = ->(user_info, controller) do
+  #
+  # @param payload [Hash] the user information returned by the AgentConnect API
+  config.callback = ->(payload) do
     # Connect the user to your application
     # For instance :
-    agent = Agent.find_by(email: user_info["email"])
+    agent = Agent.find_by(email: payload.user_email)
     if agent
-      controller.session[:agent_id] = agent.id
-      controller.redirect_to root_path
+      session[:agent_id] = agent.id
+      redirect_to root_path
     else
-      controller.redirect_to new_agent_path
+      redirect_to new_agent_path
     end
   end
 end
