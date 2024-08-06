@@ -29,7 +29,7 @@ AgentConnect.initialize! do |config|
   # after a successful authentication
   #
   # @param payload [Hash] the user information returned by the AgentConnect API
-  config.callback = ->(payload) do
+  config.success_callback = ->(payload) do
     # Connect the user to your application
     # For instance :
     agent = Agent.find_by(email: payload.user_email)
@@ -39,6 +39,13 @@ AgentConnect.initialize! do |config|
     else
       redirect_to new_agent_path
     end
+  end
+
+  config.error_callback = ->(error) do
+    # Handle the error
+    # For instance :
+    flash[:error] = error
+    redirect_to login_path
   end
 end
 ```
