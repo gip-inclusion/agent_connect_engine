@@ -9,7 +9,7 @@ module AgentConnect
     end
 
     def callback
-      callback_client = AgentConnectOpenIdClient::Callback.new(
+      callback_client = AgentConnect::Client::Callback.new(
         session_state: session.delete(:agent_connect_state),
         params_state: params[:state],
         callback_url: callback_url,

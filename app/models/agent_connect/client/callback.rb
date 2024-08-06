@@ -1,4 +1,6 @@
+require "openid_connect"
 # voir https://github.com/france-connect/Documentation-AgentConnect/blob/main/doc_fs/technique_fca/endpoints.md
+
 module AgentConnect
   module Client
     class Callback
@@ -68,7 +70,7 @@ module AgentConnect
         }
 
         response = Typhoeus.post(
-          URI("#{ENV['AGENT_CONNECT_BASE_URL']}/token"),
+          URI("#{AgentConnect.base_url}/token"),
           body: data,
           headers: { "Content-Type" => "application/x-www-form-urlencoded" }
         )
