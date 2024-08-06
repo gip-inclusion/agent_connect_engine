@@ -3,7 +3,11 @@ AgentConnect.initialize! do |config|
   config.client_secret = "client_secret"
   config.base_url = "https://base_url"
 
-  config.callback = ->(user_info) do
+  config.success_callback = ->(user_info) do
+    p user_info
+  end
+
+  config.error_callback = ->(user_info) do
     p user_info
   end
 end

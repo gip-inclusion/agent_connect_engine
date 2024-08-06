@@ -22,9 +22,6 @@ module AgentConnect
         token = fetch_token(code, @callback_url)
 
         @user_info = fetch_user_info(token)
-      rescue StandardError => e
-        Sentry.capture_exception(e)
-        nil
       end
 
       def user_email
@@ -86,33 +83,29 @@ module AgentConnect
       end
 
       def validate_nonce!(encoded_id_token)
-        decoded_id_token = OpenIDConnect::ResponseObject::IdToken.decode(encoded_id_token, agent_connect_config.jwks)
+        decoded_id_token = OpenIDConnect::ResponseObject::IdToken.decode(encoded_id_token, AgentConnect.discovery.jwks)
         decoded_id_token.verify!(
-          issuer: agent_connect_config.issuer,
-          client_id: ENV["AGENT_CONNECT_CLIENT_ID"],
+          issuer: AgentConnect.discovery.issuer,
+          client_id: AgentConnect.client_id,
           nonce: @nonce
         )
       end
 
       def fetch_user_info(token)
-        uri = URI("#{ENV['AGENT_CONNECT_BASE_URL']}/userinfo")
+        uri = URI("#{AgentConnect.base_url}/userinfo")
         uri.query = URI.encode_www_form({ schema: "openid" })
 
         response = Typhoeus.get(uri, headers: { "Authorization" => "Bearer #{token}" })
 
         handle_response_error(response)
 
-        JWT.decode(response.body, nil, true, algorithms: agent_connect_config.jwks.first["alg"], jwks: agent_connect_config.jwks).first
+        JWT.decode(response.body, nil, true, algorithms: AgentConnect.discovery.jwks.first["alg"], jwks: AgentConnect.discovery.jwks).first
       end
 
       def handle_response_error(response)
         unless response.success?
           raise(ApiRequestError, "code:#{response.response_code}, body:#{response.response_body}")
         end
-      end
-
-      def agent_connect_config
-        Rails.configuration.x.agent_connect_config
       end
     end
   end

@@ -13,7 +13,7 @@ module AgentConnect
         }
 
         # voir # https://github.com/numerique-gouv/agentconnect-documentation/blob/main/doc_fs/implementation_technique.md#42-impl%C3%A9mentation-de-la-route-post_logout_redirect_uri
-        "#{AgentConnect.end_session_endpoint}?#{query_params.to_query}"
+        "#{AgentConnect.discovery.end_session_endpoint}?#{query_params.to_query}"
       end
     end
   end
