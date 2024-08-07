@@ -22,10 +22,10 @@ $ bundle
 First you need to configure this gem with your AgentConnect credentials.
 ```ruby
 AgentConnect.initialize! do |config|
-  # Declare your client_id, client_secret and the base_url of the AgentConnect API
   config.client_id = ENV["AGENT_CONNECT_CLIENT_ID"]
   config.client_secret = ENV["AGENT_CONNECT_CLIENT_SECRET"]
   config.base_url = ENV["AGENT_CONNECT_BASE_URL"]
+  config.scope = "openid email"
 
   # This is optional, by default it will fallback to "HS256"
   config.algorithm = ENV["AGENT_CONNECT_ALGORITHM"]
@@ -34,7 +34,7 @@ AgentConnect.initialize! do |config|
   # The callback is executed in the scope of a controller so you can redirect the user
   # after a successful authentication
   #
-  # @param payload [Hash] the user information returned by the AgentConnect API
+  # @param payload -> the user information returned by the AgentConnect API
   config.success_callback = ->(payload) do
     # Connect the user to your application
     # For instance :
