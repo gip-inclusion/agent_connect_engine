@@ -1,5 +1,8 @@
 # AgentConnect
-Cette Gem est un engine permet de faciliter l'implémentation d'AgentConnect dans un projet Rails.
+
+[![Build](https://github.com/gip-inclusion/agent_connect_engine/actions/workflows/main.yml/badge.svg)](https://github.com/gip-inclusion/agent_connect_engine/actions)
+
+This gem is a Rails engine simplyfing the integration of the AgentConnect in a Rails application.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -23,6 +26,8 @@ AgentConnect.initialize! do |config|
   config.client_id = ENV["AGENT_CONNECT_CLIENT_ID"]
   config.client_secret = ENV["AGENT_CONNECT_CLIENT_SECRET"]
   config.base_url = ENV["AGENT_CONNECT_BASE_URL"]
+
+  # This is optional, by default it will fallback to "HS256"
   config.algorithm = ENV["AGENT_CONNECT_ALGORITHM"]
 
   # Declare the callback that will be called after the user is authenticated
