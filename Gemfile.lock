@@ -141,6 +141,8 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
+      racc (~> 1.4)
     openid_connect (2.3.0)
       activemodel
       attr_required (>= 1.0.0)
@@ -224,6 +226,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     strscan (3.1.0)
     swd (2.0.3)
       activesupport (>= 3)
@@ -255,6 +258,7 @@ GEM
 
 PLATFORMS
   arm64-darwin
+  x86_64-linux
 
 DEPENDENCIES
   agent_connect!
