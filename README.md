@@ -23,6 +23,7 @@ AgentConnect.initialize! do |config|
   config.client_id = ENV["AGENT_CONNECT_CLIENT_ID"]
   config.client_secret = ENV["AGENT_CONNECT_CLIENT_SECRET"]
   config.base_url = ENV["AGENT_CONNECT_BASE_URL"]
+  config.algorithm = ENV["AGENT_CONNECT_ALGORITHM"]
 
   # Declare the callback that will be called after the user is authenticated
   # The callback is executed in the scope of a controller so you can redirect the user
