@@ -10,5 +10,10 @@ gem "sqlite3"
 
 gem "sprockets-rails"
 
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0'
+  gem 'webmock'
+end
+
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem "debug", ">= 1.0.0"

@@ -22,6 +22,8 @@ module AgentConnect
       end
 
       instance_exec(callback_client, &AgentConnect.success_callback)
+    rescue => e
+      instance_exec(callback_client, &AgentConnect.error_callback)
     end
   end
 end

@@ -15,4 +15,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 7.0.8.4"
   spec.add_dependency "typhoeus", ">= 1.4.0"
   spec.add_dependency "openid_connect", ">= 2"
+  spec.add_dependency "jwt", "2.7.1"
 end
