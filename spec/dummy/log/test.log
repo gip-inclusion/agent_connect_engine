@@ -1,0 +1,72 @@
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#auth as HTML
+Redirected to https://fca.integ01.dev-agentconnect.fr/api/v2/authorize?acr_values=eidas1&client_id=client_id&nonce=agent_connect_nonce_pLMJjkziKPf8E28UwFuFQPvVjQHdUJsc&redirect_uri=http%3A%2F%2Ftest.host%2Fagent_connect%2Fcallback&response_type=code&scope=openid+email+given_name+usual_name&state=agent_connect_state_D3akmWvojwAZY7qnB54pGQUUSX5EkMEK
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 1873)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_A86gbP3zWLBSncW4HJLAwfo917gLyxCp"}
+ETHON: Libcurl initialized
+Redirected to http://test.host/success_path
+Completed 302 Found in 13ms (ActiveRecord: 0.0ms | Allocations: 5127)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_Z5GiKfE1cfxJT4NDwht25qGynYYfdUSw"}
+Redirected to http://test.host/error_path
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms | Allocations: 2612)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#auth as HTML
+Redirected to https://fca.integ01.dev-agentconnect.fr/api/v2/authorize?acr_values=eidas1&client_id=client_id&nonce=agent_connect_nonce_Z66FaD68GmMm7dG4F24C4JXT25kE3X4X&redirect_uri=http%3A%2F%2Ftest.host%2Fagent_connect%2Fcallback&response_type=code&scope=openid+email+given_name+usual_name&state=agent_connect_state_x7XaA18J9NwpW1n3n5NC6E5ZxSqatwNK
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1874)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_wCSnbPjGYFCSduqAm31JvQdTmRp4E7cr"}
+ETHON: Libcurl initialized
+Redirected to http://test.host/success_path
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms | Allocations: 5127)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_jrEUVGdzt4kzqHsFqnAgeMvYn2UhDXzX"}
+Redirected to http://test.host/error_path
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms | Allocations: 2612)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#auth as HTML
+Redirected to https://fca.integ01.dev-agentconnect.fr/api/v2/authorize?acr_values=eidas1&client_id=client_id&nonce=agent_connect_nonce_N1DEqQNenLxCzNyapDdKGyVaZsgaYGA9&redirect_uri=http%3A%2F%2Ftest.host%2Fagent_connect%2Fcallback&response_type=code&scope=openid+email+given_name+usual_name&state=agent_connect_state_KnLwzkf37PcdVbvbFdJFo6kuKk1TXSDs
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1870)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_EzYmxQzkE8ZosVLu3Q6PqQmFqMk5c2Ya"}
+ETHON: Libcurl initialized
+Redirected to http://test.host/success_path
+Completed 302 Found in 13ms (ActiveRecord: 0.0ms | Allocations: 5127)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_W1gWEEChZqbuDmMG4qLDpJqkhnuDYjT8"}
+Redirected to http://test.host/error_path
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms | Allocations: 2612)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#auth as HTML
+Redirected to https://fca.integ01.dev-agentconnect.fr/api/v2/authorize?acr_values=eidas1&client_id=client_id&nonce=agent_connect_nonce_VMevLPzU852cVpgKdiLh2gmAgkZe4MFx&redirect_uri=http%3A%2F%2Ftest.host%2Fagent_connect%2Fcallback&response_type=code&scope=openid+email+given_name+usual_name&state=agent_connect_state_AbkkEGdRCeX926LmaHMKHts87bFaeo5D
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1874)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_szYU6r3Aec5bRngbqvebzDDhxeYT5o8j"}
+ETHON: Libcurl initialized
+Redirected to http://test.host/success_path
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms | Allocations: 5555)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by AgentConnect::AuthController#callback as HTML
+  Parameters: {"code"=>"IDej8hpYou2rZLsDgTzZ_nMl1aXmNajpByd20dig4e8", "state"=>"agent_connect_state_NoFnLw6dnGApq6xUgdDv386D8FK2cZD6"}
+Redirected to http://test.host/error_path
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms | Allocations: 2612)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
