@@ -1,5 +1,5 @@
 module AgentConnect
-  class AuthController < ApplicationController
+  class AuthController < ActionController::Base
     def auth
       auth_client = AgentConnect::Client::Auth.new(login_hint: params[:login_hint])
       session[:agent_connect_state] = auth_client.state
