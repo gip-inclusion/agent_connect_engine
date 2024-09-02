@@ -48,7 +48,6 @@ RSpec.describe AuthController, type: :controller do
     it "processes the response" do
       get :callback, params: { state: state, code: code }
       json = JSON.parse(response.body)
-      p json
       expect(json["email"]).to eq("francis.factice@exemple.gouv.fr")
       expect(json["given_name"]).to include("Francis")
     end
