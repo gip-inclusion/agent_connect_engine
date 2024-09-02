@@ -1,8 +1,6 @@
 require "rails_helper"
 
-RSpec.describe AgentConnect::AuthController, type: :controller do
-  routes { AgentConnect::Engine.routes }
-
+RSpec.describe AuthController, type: :controller do
   before {
     WebMock.disable_net_connect!
   }
@@ -47,13 +45,12 @@ RSpec.describe AgentConnect::AuthController, type: :controller do
       AgentConnectStubs.stub_callback_requests(code, user_info)
     end
 
-    it "calls the success callback" do
-      expect(AgentConnect).to receive(:success_callback).once.and_call_original
+    it "processes the response" do
       get :callback, params: { state: state, code: code }
-      expect(response).to redirect_to("/success_path")
-      expect(session[:agent][:email]).to eq("francis.factice@exemple.gouv.fr")
-      expect(session[:agent][:first_name]).to eq("Francis")
-      expect(session[:agent][:last_name]).to eq("Factice")
+      json = JSON.parse(response.body)
+      p json
+      expect(json["email"]).to eq("francis.factice@exemple.gouv.fr")
+      expect(json["given_name"]).to include("Francis")
     end
 
     context "when an error occurs" do
@@ -61,10 +58,9 @@ RSpec.describe AgentConnect::AuthController, type: :controller do
         allow(OpenIDConnect::ResponseObject::IdToken).to receive(:decode).and_raise(OpenIDConnect::ResponseObject::IdToken::InvalidToken)
       end
 
-      it "calls the error callback" do
-        expect(AgentConnect).to receive(:error_callback).once.and_call_original
+      it "processes an error" do
         get :callback, params: { state: state, code: code }
-        expect(response).to redirect_to("/error_path")
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

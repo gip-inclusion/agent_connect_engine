@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount AgentConnect::Engine => "/agent_connect"
+  agent_connect(controller: AuthController)
 end

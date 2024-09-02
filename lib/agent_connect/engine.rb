@@ -1,3 +1,5 @@
+require "agent_connect/routes"
+
 module AgentConnect
   class Engine < ::Rails::Engine
     isolate_namespace AgentConnect
