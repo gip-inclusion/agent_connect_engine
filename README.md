@@ -30,7 +30,7 @@ AgentConnect.initialize! do |config|
   # Ceci détermine les informations que vous souhaitez récupérer de l'usager, vous devez au préalable avec coché ces informations dans le formulaire démarches simplifiées
   config.scope = "openid email"
 
-  # Ceci correspond à l'algorithme de chiffrement spécificé via le formulaire démarches simplifiées
+  # Ceci correspond à l'algorithme de chiffrement spécifié via le formulaire démarches simplifiées
   config.algorithm = ENV["AGENT_CONNECT_ALGORITHM"]
 end
 ```
@@ -39,6 +39,7 @@ end
 Ajoutez les routes de l'engine dans votre fichier `config/routes.rb` :
 ```ruby
 Rails.application.routes.draw do
+  # Vous devrez évidemment créer le controller spécifié ci-dessous
   agent_connect(controller: MyAgentConnectController, path: "/agent_connect")
 end
 ```
@@ -65,7 +66,8 @@ Ce bouton redirigera l'usager vers la page de connexion AgentConnect. En retour 
 ### Controller
 Créez un controller pour gérer la connexion AgentConnect :
 ```ruby
-class MyAgentConnectController < AgentConnect::BaseController
+# Ce controller doit correspondre à celui que vous avez spécifié dans le fichier de routes
+class MyAgentConnectController < ApplicationController
   def callback
     # Cette méthode sera appelée en cas de succès ou d'échec de la connexion AgentConnect
     # suite à un clic sur le bouton de connexion AgentConnect.
