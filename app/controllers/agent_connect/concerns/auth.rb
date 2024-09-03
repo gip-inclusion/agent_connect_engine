@@ -14,7 +14,6 @@ module AgentConnect
         session[:agent_connect_state] = auth_client.state
         session[:nonce] = auth_client.nonce
 
-
         redirect_to auth_client.redirect_url(agent_connect_callback_url), allow_other_host: true
       end
 
