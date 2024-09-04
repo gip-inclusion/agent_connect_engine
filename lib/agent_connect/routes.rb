@@ -8,6 +8,7 @@ module ActionDispatch::Routing
       scope path, controller: controller.name.underscore.gsub('_controller', ''), as: "agent_connect" do
         get "auth"
         get "callback"
+        get "logout"
       end
     end
   end

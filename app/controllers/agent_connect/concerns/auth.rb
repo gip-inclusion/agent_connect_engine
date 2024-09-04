@@ -7,6 +7,7 @@ module AgentConnect
         attr_reader :authentication
 
         before_action :set_agent_connect_client, only: [:callback]
+        before_action :set_agent_connect_logout_client, only: [:logout]
       end
 
       def auth
@@ -21,7 +22,15 @@ module AgentConnect
         raise NoMethodError, "You must implement the callback method in your controller"
       end
 
+      def logout
+        redirect_to authentication.agent_connect_logout_url(root_url), allow_other_host: true
+      end
+
       private
+
+      def set_agent_connect_logout_client
+        @authentication = AgentConnect::Client::Logout.new(session[:agent_connect_id_token])
+      end
 
       def set_agent_connect_client
         @authentication = AgentConnect::Client::Callback.new(
@@ -32,6 +41,7 @@ module AgentConnect
         )
 
         authentication.fetch_user_info_from_code!(params[:code])
+        session[:agent_connect_id_token] = authentication.id_token_for_logout
       rescue => e
         Rails.logger.error(e)
       end
