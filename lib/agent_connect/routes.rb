@@ -5,7 +5,7 @@ module ActionDispatch::Routing
         include AgentConnect::Concerns::Auth
       end
 
-      scope path, controller: controller.name.underscore.split('_').first, as: "agent_connect" do
+      scope path, controller: controller.name.underscore.gsub('_controller', ''), as: "agent_connect" do
         get "auth"
         get "callback"
       end
