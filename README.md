@@ -87,7 +87,7 @@ class MyAgentConnectController < ApplicationController
     # Elle est chargée d'authentifier cette personne.
 
     if authentification.success?
-      # L'usager s'est connecté avec succès à AgentConnect
+      # L'usager s'est connecté avec succès à AgentConnect.
       # Dans ce cas vous pourriez vouloir rechercher l'usager dans votre base de données et le connecter en faisant par exemple :
       agent = Agent.find_or_create_by!(email: authentification.user_email)
       session[:agent_id] = agent.id
