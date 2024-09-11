@@ -4,7 +4,7 @@
 
 Cette gem est un engine Rails permettant de simplifier l'intégration d'AgentConnect dans une application Rails.
 
-![bouton agent connect](https://github.com/gip-inclusion/agent_connect_engine/blob/feat/improved-api/docs/bouton-connexion.png?raw=true)
+![bouton agent connect](https://github.com/gip-inclusion/agent_connect_engine/blob/main/docs/bouton-connexion.png?raw=true)
 
 ## Installation
 Ajouter cette ligne dans votre Gemfile :
@@ -65,7 +65,7 @@ Si votre site est par exemple rdv-insertion.fr, vous devrez renseigner dans le f
 https://rdv-insertion.fr/agent_connect/callback
 ```
 
-![résultat formulaire](https://github.com/gip-inclusion/agent_connect_engine/blob/feat/improved-api/docs/configuration-demarche-simplifiees.png?raw=true)
+![résultat formulaire](https://github.com/gip-inclusion/agent_connect_engine/blob/main/docs/configuration-demarche-simplifiees.png?raw=true)
 
 
 
