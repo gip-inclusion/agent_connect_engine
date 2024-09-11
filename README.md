@@ -29,7 +29,7 @@ AgentConnect.initialize! do |config|
   config.client_secret = ENV["AGENT_CONNECT_CLIENT_SECRET"]
   config.base_url = ENV["AGENT_CONNECT_BASE_URL"]
 
-  # Ceci détermine les informations que vous souhaitez récupérer de l'usager, vous devez au préalable avec coché ces informations dans le formulaire démarches simplifiées
+  # Ceci détermine les informations que vous souhaitez récupérer de l'usager, vous devez au préalable avoir coché ces informations dans le formulaire démarches simplifiées
   config.scope = "openid email"
 
   # Ceci correspond à l'algorithme de chiffrement spécifié via le formulaire démarches simplifiées
