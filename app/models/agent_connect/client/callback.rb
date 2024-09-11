@@ -14,14 +14,18 @@ module AgentConnect
         @nonce = nonce
       end
 
-      attr_reader :id_token_for_logout
+      attr_reader :id_token_for_logout, :user_info
 
       def fetch_user_info_from_code!(code)
         validate_state!
 
         token = fetch_token(code, @callback_url)
 
-        @user_info = fetch_user_info(token)
+        @user_info = fetch_user_info(token) || {}
+      end
+
+      def success?
+        @user_info.present?
       end
 
       def user_email
@@ -65,14 +69,11 @@ module AgentConnect
           grant_type: "authorization_code",
           redirect_uri: agent_connect_callback_url,
         }
-
         response = Typhoeus.post(
           URI("#{AgentConnect.base_url}/token"),
           body: data,
           headers: { "Content-Type" => "application/x-www-form-urlencoded" }
         )
-
-        handle_response_error(response)
 
         response_hash = JSON.parse(response.body)
 
@@ -97,15 +98,9 @@ module AgentConnect
 
         response = Typhoeus.get(uri, headers: { "Authorization" => "Bearer #{token}" })
 
-        handle_response_error(response)
+        return unless response.success?
 
         JWT.decode(response.body, nil, true, algorithms: AgentConnect.algorithm || AgentConnect.discovery.jwks.first["alg"], jwks: AgentConnect.discovery.jwks).first
-      end
-
-      def handle_response_error(response)
-        unless response.success?
-          raise(ApiRequestError, "code:#{response.response_code}, body:#{response.response_body}")
-        end
       end
     end
   end
